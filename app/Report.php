@@ -3,13 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes
 
 class Report extends Model
 {
-    use SoftDeletes;
-
     protected $fillable=[
-      'start_time','end_time',''
+      'start_time','end_time','content','user_id'
     ];
+
+    protected $dates=[
+        'start_time','end_time','created_at','updated_at',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

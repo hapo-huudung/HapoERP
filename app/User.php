@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\SoftDeletes
+use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -28,4 +28,9 @@ class User extends Authenticatable
     ];
 
     protected $dates=[ 'created_at', 'deleted_at', 'updated_at', 'birthday' ];
+
+    public function reports()
+    {
+        return $this->hasMany('App\Report');
+    }
 }
